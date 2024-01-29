@@ -4,15 +4,14 @@ import { NextResponse } from "next/server";
 export async function middleware(request) {
   const currentPath = request.nextUrl.pathname;
   const token = await getToken({ req: request });
-  console.log(token);
-  console.log('시발');
+  
 
   if (currentPath === "/")
     return NextResponse.redirect(new URL("/user/home", request.url));
 
   if (currentPath.startsWith("/user")) {
     if (!token) {
-      return NextResponse.redirect(new URL("/api/auth/signin", request.url));
+      return NextResponse.redirect(new URL("/api/auth/signin?"+'token.email', request.url));
     }
   }
 

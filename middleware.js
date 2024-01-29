@@ -8,7 +8,7 @@ export async function middleware(request) {
 
   if (currentPath === "/")
     return NextResponse.redirect(new URL("/user/home", request.url));
- /*
+ 
   if (currentPath.startsWith("/user")) {
     if (!token) {
       return NextResponse.redirect(new URL("/api/auth/signin?"+'token.email', request.url));
@@ -25,7 +25,7 @@ export async function middleware(request) {
     if (currentPath === "/admin") {
       return NextResponse.redirect(new URL("/admin/home", request.url));
     }
-  }*/
+  }
 
   return NextResponse.next();
 }

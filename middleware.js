@@ -5,6 +5,7 @@ export async function middleware(request) {
   const currentPath = request.nextUrl.pathname;
   const token = await getToken({ req: request });
   console.log(token);
+  console.log('시발');
 
   if (currentPath === "/")
     return NextResponse.redirect(new URL("/user/home", request.url));
